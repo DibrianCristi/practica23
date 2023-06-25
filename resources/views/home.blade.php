@@ -10,12 +10,10 @@
 <body>
     <h1>proiect</h1>
     @auth
-        <form action="/logout" method="POST">
-            @csrf
-            <button>Log out</button>
-        </form>
-        @else
+    <a href="/dashboard">Dashboard</a>
+    @else
         <a href="/login">Login</a>
+        <a href="/register">Register</a>
     @endauth
 
     <ul>

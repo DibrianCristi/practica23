@@ -30,9 +30,18 @@ Route::get('/', function () {
 });
 
 
-//Login routes
-Route::get('/login', [UserController::class, 'show']);
+//Dashboard route
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+//Login and Register routes
+Route::get('/register', [UserController::class, 'showregister']);
+Route::post('/register', [UserController::class, 'userregister']);
+
+Route::get('/login', [UserController::class, 'showlogin']);
 Route::post('/login', [UserController::class, 'userlogin']);
+
 Route::post('/logout', [UserController::class, 'logout']);
 
 //View routes
