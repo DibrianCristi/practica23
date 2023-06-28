@@ -10,15 +10,28 @@
 
 <body>
     <a href="/">Home</a>
-    <p><a href="/electrica/create_electrica_produs">Adauga produs</a></p>
+    @auth
+        <p><a href="/electrica/create_electrica_produs">Adauga produs</a></p>
+        <p><a href="/dashboard">Dashboard</a></p>
+    @else
+        <p><a href="/login">Login</a></p>
+        <p><a href="/register">Register</a></p>
+    @endauth
     <h1>Electrica</h1>
-
-    @foreach ($electrica as $item)
-        <h1>{{ $item['denumire'] }}</h1>
-        {{ $item['descriere'] }}
-        {{ $item['made_in'] }}
-        {{ $item['cantitate'] }}
-        {{ $item['pret'] }}
+    @foreach ($electrica as $electrica)
+        <h1>{{ $electrica['denumire'] }}</h1>
+        {{ $electrica['descriere'] }}
+        {{ $electrica['made_in'] }}
+        {{ $electrica['cantitate'] }} 
+        {{ $electrica['pret'] }}
+        @auth
+        <p><a href="/electrica/edit-electrica/{{ $electrica->id }}">Edit</a></p>
+            <form action="/electrica/delete-electrica/{{ $electrica->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button>Delete</button>
+            </form>
+        @endauth
     @endforeach
 </body>
 

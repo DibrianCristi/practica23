@@ -10,15 +10,28 @@
 
 <body>
     <a href="/">Home</a>
+    @auth
     <p><a href="/instrumente/create_instrumente_produs">Adauga produs</a></p>
-
+    <p><a href="/dashboard">Dashboard</a></p>
+    @else
+    <p><a href="/login">Login</a></p>
+    <p><a href="/register">Register</a></p>
+    @endauth
     <h1>Instrumente</h1>
-    @foreach ($instrumente as $item)
-        <h1>{{ $item['denumire'] }}</h1>
-        {{ $item['descriere'] }}
-        {{ $item['made_in'] }}
-        {{ $item['cantitate'] }}
-        {{ $item['pret'] }}
+    @foreach ($instrumente as $instrumente)
+        <h1>{{ $instrumente['denumire'] }}</h1>
+        {{ $instrumente['descriere'] }}
+        {{ $instrumente['made_in'] }}
+        {{ $instrumente['cantitate'] }}
+        {{ $instrumente['pret'] }}
+        @auth
+        <p><a href="/instrumente/edit-instrumente/{{ $instrumente->id }}">Edit</a></p>
+            <form action="/instrumente/delete-instrumente/{{ $instrumente->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button>Delete</button>
+            </form>
+        @endauth
     @endforeach
 </body>
 

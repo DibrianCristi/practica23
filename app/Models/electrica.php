@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class electrica extends Model
 {
     use HasFactory;
-    protected $fillable=['denumire','descriere','made_in','cantitate','pret'];
+    protected $fillable = ['denumire', 'descriere', 'made_in', 'cantitate', 'pret'];
     public $timestamps = false;
 }

@@ -86,3 +86,24 @@ Route::post('/suruburi/create_suruburi_produs', [suruburiController::class, 'cre
 Route::get('/santehnica/create_electric4_produs', [santehnicaController::class, 'showcreate']);
 Route::post('/santehnica/create_santehnica_produs', [santehnicaController::class, 'createSantehnica']);
 
+//Edit and Delete produs routes
+Route::get('/electrica/edit-electrica/{electrica}', [electricaController::class, 'showEdit']);
+Route::put('/electrica/edit-electrica/{electrica}', [electricaController::class, 'produsEdit']);
+Route::delete('/electrica/delete-electrica/{electrica}', [electricaController::class, 'deleteProdus']);
+
+Route::get('/uzcasnic/edit-uzcasnic/{uzcasnic}', [uzcasnicController::class, 'showEdit']);
+Route::put('/uzcasnic/edit-uzcasnic/{uzcasnic}', [uzcasnicController::class, 'produsEdit']);
+Route::delete('/uzcasnic/delete-uzcasnic/{uzcasnic}', [uzcasnicController::class, 'deleteProdus']);
+
+Route::get('/instrumente/edit-instrumente/{instrumente}', [instrumenteController::class, 'showEdit']);
+Route::put('/instrumente/edit-instrumente/{instrumente}', [instrumenteController::class, 'produsEdit']);
+Route::delete('/instrumente/delete-instrumente/{instrumente}', [instrumenteController::class, 'deleteProdus']);
+
+Route::get('/suruburi/edit-suruburi/{suruburi}', [suruburiController::class, 'showEdit']);
+Route::put('/suruburi/edit-suruburi/{suruburi}', [suruburiController::class, 'produsEdit']);
+Route::delete('/suruburi/delete-suruburi/{suruburi}', [suruburiController::class, 'deleteProdus']);
+
+Route::get('/santehnica/edit-santehnica/{santehnica}', [santehnicaController::class, 'showEdit']);
+Route::put('/santehnica/edit-santehnica/{santehnica}', [santehnicaController::class, 'produsEdit']);
+Route::delete('/santehnica/delete-santehnica/{santehnica}', [santehnicaController::class, 'deleteProdus']);
+

@@ -10,14 +10,28 @@
 
 <body>
     <a href="/">Home</a>
+    @auth
     <p><a href="/suruburi/create_suruburi_produs">Adauga produs</a></p>
+    <p><a href="/dashboard">Dashboard</a></p>
+    @else 
+    <p><a href="/login">Login</a></p>
+    <p><a href="/register">Register</a></p>
+    @endauth
     <h1>Suruburi</h1>
-    @foreach ($suruburi as $item)
-        <h1>{{ $item['denumire'] }}</h1>
-        {{ $item['descriere'] }}
-        {{ $item['made_in'] }}
-        {{ $item['cantitate'] }}
-        {{ $item['pret'] }}
+    @foreach ($suruburi as $suruburi)
+        <h1>{{ $suruburi['denumire'] }}</h1>
+        {{ $suruburi['descriere'] }}
+        {{ $suruburi['made_in'] }}
+        {{ $suruburi['cantitate'] }}
+        {{ $suruburi['pret'] }}
+        @auth
+        <p><a href="/suruburi/edit-suruburi/{{ $suruburi->id }}">Edit</a></p>
+            <form action="/suruburi/delete-suruburi/{{ $suruburi->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button>Delete</button>
+            </form>
+        @endauth
     @endforeach
 </body>
 
