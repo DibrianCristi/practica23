@@ -11,7 +11,9 @@
 <body>
     <a href="/">Home</a>
     @auth
+    @if (auth()->user()->is_admin)
     <p><a href="/uzcasnic/create_uzcasnic_produs">Adauga produs</a></p>
+    @endif
     <p><a href="/dashboard">Dashboard</a></p>
     @else 
     <p><a href="/login">Login</a></p>
@@ -25,12 +27,14 @@
         {{ $uzcasnic['cantitate'] }}
         {{ $uzcasnic['pret'] }}
         @auth
+        @if (auth()->user()->is_admin)
         <p><a href="/uzcasnic/edit-uzcasnic/{{ $uzcasnic->id }}">Edit</a></p>
             <form action="/uzcasnic/delete-uzcasnic/{{ $uzcasnic->id }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button>Delete</button>
             </form>
+            @endif
         @endauth
     @endforeach
 </body>

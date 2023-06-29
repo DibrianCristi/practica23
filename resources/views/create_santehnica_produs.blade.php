@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <a href="/">Home</a>
     <h1>Adauga produs</h1>
     <form action="/santehnica/create_santehnica_produs" method="post">
         @csrf

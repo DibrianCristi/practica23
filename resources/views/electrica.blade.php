@@ -11,7 +11,9 @@
 <body>
     <a href="/">Home</a>
     @auth
-        <p><a href="/electrica/create_electrica_produs">Adauga produs</a></p>
+    @if (auth()->user()->is_admin)
+    <p><a href="/electrica/create_electrica_produs">Adauga produs</a></p>
+    @endif
         <p><a href="/dashboard">Dashboard</a></p>
     @else
         <p><a href="/login">Login</a></p>
@@ -25,12 +27,14 @@
         {{ $electrica['cantitate'] }} 
         {{ $electrica['pret'] }}
         @auth
+        @if (auth()->user()->is_admin)
         <p><a href="/electrica/edit-electrica/{{ $electrica->id }}">Edit</a></p>
-            <form action="/electrica/delete-electrica/{{ $electrica->id }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button>Delete</button>
-            </form>
+        <form action="/electrica/delete-electrica/{{ $electrica->id }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button>Delete</button>
+        </form>
+        @endif
         @endauth
     @endforeach
 </body>

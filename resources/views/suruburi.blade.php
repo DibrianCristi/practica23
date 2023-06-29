@@ -11,7 +11,9 @@
 <body>
     <a href="/">Home</a>
     @auth
+    @if (auth()->user()->is_admin)
     <p><a href="/suruburi/create_suruburi_produs">Adauga produs</a></p>
+    @endif
     <p><a href="/dashboard">Dashboard</a></p>
     @else 
     <p><a href="/login">Login</a></p>
@@ -25,12 +27,14 @@
         {{ $suruburi['cantitate'] }}
         {{ $suruburi['pret'] }}
         @auth
+        @if (auth()->user()->is_admin)
         <p><a href="/suruburi/edit-suruburi/{{ $suruburi->id }}">Edit</a></p>
             <form action="/suruburi/delete-suruburi/{{ $suruburi->id }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button>Delete</button>
             </form>
+            @endif
         @endauth
     @endforeach
 </body>

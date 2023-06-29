@@ -11,7 +11,9 @@
 <body>
     <a href="/">Home</a>
     @auth
+    @if (auth()->user()->is_admin)
     <p><a href="/instrumente/create_instrumente_produs">Adauga produs</a></p>
+    @endif
     <p><a href="/dashboard">Dashboard</a></p>
     @else
     <p><a href="/login">Login</a></p>
@@ -25,12 +27,14 @@
         {{ $instrumente['cantitate'] }}
         {{ $instrumente['pret'] }}
         @auth
+        @if (auth()->user()->is_admin)
         <p><a href="/instrumente/edit-instrumente/{{ $instrumente->id }}">Edit</a></p>
             <form action="/instrumente/delete-instrumente/{{ $instrumente->id }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button>Delete</button>
             </form>
+            @endif
         @endauth
     @endforeach
 </body>
