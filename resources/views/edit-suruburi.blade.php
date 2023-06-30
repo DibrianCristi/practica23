@@ -16,7 +16,7 @@
         <input type="text" name="descriere" value="{{$suruburi->descriere}}">
         <input type="text" name="made_in" value="{{$suruburi->made_in}}">
         <input type="number" name="cantitate" value="{{$suruburi->cantitate}}">
-        <input type="number" name="pret" value="{{$suruburi->pret}}">
+        <input type="number" name="pret" step=".01" value="{{$suruburi->pret}}">
         <button>Save Changes</button>
     </form>
     <a href="/suruburi">Back</a>

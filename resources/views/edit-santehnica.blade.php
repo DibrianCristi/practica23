@@ -16,7 +16,7 @@
         <input type="text" name="descriere" value="{{$santehnica->descriere}}">
         <input type="text" name="made_in" value="{{$santehnica->made_in}}">
         <input type="number" name="cantitate" value="{{$santehnica->cantitate}}">
-        <input type="number" name="pret" value="{{$santehnica->pret}}">
+        <input type="number" name="pret" step=".01" value="{{$santehnica->pret}}">
         <button>Save Changes</button>
     </form>
     <a href="/santehnica">Back</a>

@@ -16,7 +16,7 @@
         <input type="text" name="descriere" value="{{$electrica->descriere}}">
         <input type="text" name="made_in" value="{{$electrica->made_in}}">
         <input type="number" name="cantitate" value="{{$electrica->cantitate}}">
-        <input type="number" name="pret" value="{{$electrica->pret}}">
+        <input type="number" name="pret" step=".01" value="{{$electrica->pret}}">
         <button>Save Changes</button>
     </form>
     <a href="/electrica">Back</a>

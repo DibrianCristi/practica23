@@ -16,7 +16,7 @@
         <input type="text" name="descriere" value="{{$instrumente->descriere}}">
         <input type="text" name="made_in" value="{{$instrumente->made_in}}">
         <input type="number" name="cantitate" value="{{$instrumente->cantitate}}">
-        <input type="number" name="pret" value="{{$instrumente->pret}}">
+        <input type="number" name="pret" step=".01" value="{{$instrumente->pret}}">
         <button>Save Changes</button>
     </form>
     <a href="/instrumente">Back</a>

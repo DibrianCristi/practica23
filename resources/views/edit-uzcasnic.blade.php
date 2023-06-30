@@ -16,7 +16,7 @@
         <input type="text" name="descriere" value="{{$uzcasnic->descriere}}">
         <input type="text" name="made_in" value="{{$uzcasnic->made_in}}">
         <input type="number" name="cantitate" value="{{$uzcasnic->cantitate}}">
-        <input type="number" name="pret" value="{{$uzcasnic->pret}}">
+        <input type="number" name="pret" step=".01" value="{{$uzcasnic->pret}}">
         <button>Save Changes</button>
     </form>
     <a href="/uzcasnic">Back</a>

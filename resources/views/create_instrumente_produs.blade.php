@@ -17,7 +17,7 @@
         <input name="descriere" type="text" placeholder="Descriere">
         <input name="made_in" type="text" placeholder="Tara de producere">
         <input name="cantitate" type="number" placeholder="Cantitatea">
-        <input name="pret" type="number" placeholder="Pret">
+        <input name="pret" type="number" placeholder="Pret" step=".01">
         <button>Submit</button>
     </form>
 </body>
