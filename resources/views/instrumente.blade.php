@@ -11,31 +11,31 @@
 <body>
     <a href="/">Home</a>
     @auth
-    @if (auth()->user()->is_admin)
-    <p><a href="/instrumente/create_instrumente_produs">Adauga produs</a></p>
-    @endif
-    <p><a href="/dashboard">Dashboard</a></p>
+        @if (auth()->user()->is_admin)
+            <p><a href="/instrumente/create_instrumente_produs">Adauga produs</a></p>
+        @endif
+        <p><a href="/dashboard">Dashboard</a></p>
     @else
-    <p><a href="/login">Login</a></p>
-    <p><a href="/register">Register</a></p>
+        <p><a href="/login">Login</a></p>
+        <p><a href="/register">Register</a></p>
     @endauth
     <h1>Instrumente</h1>
     @foreach ($instrumente as $instrumente)
         <h1>{{ $instrumente['denumire'] }}</h1>
-        {{ $instrumente['descriere'] }}
-        {{ $instrumente['made_in'] }}
-        {{ $instrumente['cantitate'] }}
-        {{ $instrumente['pret'] }}
-        @auth
-        @if (auth()->user()->is_admin)
-        <p><a href="/instrumente/edit-instrumente/{{ $instrumente->id }}">Edit</a></p>
-            <form action="/instrumente/delete-instrumente/{{ $instrumente->id }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button>Delete</button>
-            </form>
-            @endif
-        @endauth
+        <p>{{ $instrumente['descriere'] }}</p>
+        <p>Made in {{ $instrumente['made_in'] }}</p>
+        <p>Stoc: {{ $instrumente['cantitate'] }}</p>
+        <p>Pret: {{ $instrumente['pret'] }}</p>
+            @auth
+                @if (auth()->user()->is_admin)
+                    <p><a href="/instrumente/edit-instrumente/{{ $instrumente->id }}">Edit</a></p>
+                    <form action="/instrumente/delete-instrumente/{{ $instrumente->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button>Delete</button>
+                    </form>
+                @endif
+            @endauth
     @endforeach
 </body>
 
