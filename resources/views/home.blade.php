@@ -5,12 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Proiect</title>
+    <title>Optim Construct</title>
 
 <body>
-    <h1>proiect</h1>
+    <h1>Optim Construct</h1>
     @auth
-    <a href="/dashboard">Dashboard</a>
+        <a href="/shopping-cart">Shopping Cart</a>
+    @endauth
+
+    @auth
+        <a href="/dashboard">Dashboard</a>
     @else
         <a href="/login">Login</a>
         <a href="/register">Register</a>

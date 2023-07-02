@@ -5,6 +5,7 @@ use App\Models\uzcasnic;
 use App\Models\electrica;
 use App\Models\santehnica;
 use App\Models\instrumente;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\suruburiController;
@@ -12,17 +13,10 @@ use App\Http\Controllers\uzcasnicController;
 use App\Http\Controllers\electricaController;
 use App\Http\Controllers\santehnicaController;
 use App\Http\Controllers\instrumenteController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ShoppingCartController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 //Main home route
 Route::get('/', function () {
@@ -107,3 +101,16 @@ Route::get('/santehnica/edit-santehnica/{santehnica}', [santehnicaController::cl
 Route::put('/santehnica/edit-santehnica/{santehnica}', [santehnicaController::class, 'produsEdit']);
 Route::delete('/santehnica/delete-santehnica/{santehnica}', [santehnicaController::class, 'deleteProdus']);
 
+
+Route::post('/add-to-cart/electrica', [ShoppingCartController::class, 'addToCartElectrica']);
+Route::post('/add-to-cart/uzcasnic', [ShoppingCartController::class, 'addToCartuzcasnic']);
+Route::post('/add-to-cart/instrumente', [ShoppingCartController::class, 'addToCartinstrumente']);
+Route::post('/add-to-cart/suruburi', [ShoppingCartController::class, 'addToCartsuruburi']);
+Route::post('/add-to-cart/santehnica', [ShoppingCartController::class, 'addToCartsantehnica']);
+
+Route::get('/shopping-cart', [ShoppingCartController::class, 'showCart'])->name('shopping-cart');
+Route::delete('/shopping-cart/{item}', [ShoppingCartController::class, 'removeItem'])->name('shopping-cart/remove');
+Route::post('/shopping-cart/submit', [ShoppingCartController::class, 'submitCart'])->name('shopping-cart/submit');
+
+Route::get('/order', [OrderController::class, 'show']);
+Route::delete('/order/complete/{order}', [OrderController::class, 'complete']);

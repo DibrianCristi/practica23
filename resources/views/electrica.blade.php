@@ -19,13 +19,23 @@
         <p><a href="/login">Login</a></p>
         <p><a href="/register">Register</a></p>
     @endauth
-    <h1>Electrica</h1>
-    @foreach ($electrica as $electrica)
-        <h1>{{ $electrica['denumire'] }}</h1>
-        <p>{{ $electrica['descriere'] }}</p>
-        <p>Made in {{ $electrica['made_in'] }}</p>
-        <p>Stoc: {{ $electrica['cantitate'] }}</p>
-        <p>Pret: {{ $electrica['pret'] }}</p>
+    <h2>Electrica</h2>
+    @auth
+        <a href="/shopping-cart">Shopping Cart</a>
+        @endauth @foreach ($electrica as $electrica)
+            <h1>{{ $electrica['denumire'] }}</h1>
+            <p>{{ $electrica['descriere'] }}</p>
+            <p>Made in {{ $electrica['made_in'] }}</p>
+            <p>Stoc: {{ $electrica['cantitate'] }}</p>
+            <p>Pret: {{ $electrica['pret'] }}</p>
+            @auth
+                <form action="/add-to-cart/electrica" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $electrica->id }}">
+                    <input type="number" name="cart-cantitate" value="1">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            @endauth
             @auth
                 @if (auth()->user()->is_admin)
                     <p><a href="/electrica/edit-electrica/{{ $electrica->id }}">Edit</a></p>
@@ -36,7 +46,7 @@
                     </form>
                 @endif
             @endauth
-    @endforeach
-</body>
+        @endforeach
+    </body>
 
-</html>
+    </html>

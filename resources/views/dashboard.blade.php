@@ -12,10 +12,12 @@
     <h1>DashBoard</h1>
     <a href="/">Home</a>
     @auth
+    <a href="/order">View Orders</a>
         <form action="/logout" method="POST">
             @csrf
             <button>Log out</button>
         </form>
+
     @endauth
     @guest
         <a href="/login">Login</a>
