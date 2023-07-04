@@ -12,7 +12,9 @@
     <h1>DashBoard</h1>
     <a href="/">Home</a>
     @auth
+    @if (auth()->user()->is_admin)
     <a href="/order">View Orders</a>
+    @endif
         <form action="/logout" method="POST">
             @csrf
             <button>Log out</button>
